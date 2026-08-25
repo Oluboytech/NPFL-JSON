@@ -32,6 +32,14 @@ Usage:
     # Preview without writing:
     python3 scripts/sync_team_data.py --dry-run
 
+API shape (confirmed against the provider's own docs):
+  - Auth header: Authorization: Token <key>   (NOT "Bearer")
+  - Endpoints:   GET {BASE_URL}/teams/{id}/          -> venue_id
+                 GET {BASE_URL}/venues/{id}/         -> name
+                 GET {BASE_URL}/teams/{id}/fixtures/  -> recent events,
+                     each carrying home_coach / away_coach (dicts) —
+                     there is no standalone /managers/ endpoint.
+
 Existing hand-maintained fields (stadium, note, city, state, code) are
 preserved. Enrichment only fills in bsd_team_id / current_coach, and
 only overwrites `stadium` if the repo's existing value is null — your
@@ -57,7 +65,7 @@ BSD_API_BASE_URL = os.environ.get("BSD_API_BASE_URL", "").rstrip("/")
 
 def bsd_get(path):
     url = f"{BSD_API_BASE_URL}{path}"
-    req = Request(url, headers={"Authorization": f"Bearer {BSD_API_KEY}"})
+    req = Request(url, headers={"Authorization": f"Token {BSD_API_KEY}"})
     try:
         with urlopen(req, timeout=20) as resp:
             return json.loads(resp.read())
@@ -71,20 +79,35 @@ def fetch_bsd_team_data(bsd_team_id):
     Returns {"venue_name": str|None, "coach_name": str|None} for one team
     id, using only public-safe fields (see module docstring for what is
     intentionally excluded).
+
+    /teams/{id}/ is confirmed against the provider's own docs (returns
+    venue_id). Coach data is documented as a "heavy field" only available
+    via /events/{id}/ (per-match coaches), not a standalone team-level
+    endpoint — so we pull it from that team's most recent event instead
+    of guessing at a /managers/ path that isn't in the docs.
     """
     result = {"venue_name": None, "coach_name": None}
 
-    team = bsd_get(f"/teams/{bsd_team_id}")
+    team = bsd_get(f"/teams/{bsd_team_id}/")
     if team and team.get("venue_id"):
-        venue = bsd_get(f"/venues/{team['venue_id']}")
+        venue = bsd_get(f"/venues/{team['venue_id']}/")
         if venue:
             result["venue_name"] = venue.get("name")
 
-    managers = bsd_get(f"/managers?team_id={bsd_team_id}")
-    if managers:
-        results = managers.get("results", managers) if isinstance(managers, dict) else managers
-        if results:
-            result["coach_name"] = results[0].get("name")
+    # Confirmed in docs: /teams/{id}/fixtures/ returns that team's
+    # matches, each shaped like /events/{id}/ (defaults to a recent
+    # window). We just need the coach off the latest one.
+    fixtures = bsd_get(f"/teams/{bsd_team_id}/fixtures/")
+    if fixtures:
+        rows = fixtures.get("events") or fixtures.get("results") or []
+        if rows:
+            event = rows[0]
+            if event.get("home_team_id") == bsd_team_id:
+                coach = event.get("home_coach")
+            else:
+                coach = event.get("away_coach")
+            if isinstance(coach, dict):
+                result["coach_name"] = coach.get("name")
 
     return result
 

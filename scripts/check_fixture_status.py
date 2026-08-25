@@ -100,14 +100,18 @@ class BSDClient:
           {"status": "finished", "kicked_off": true}
         Never returns or retains score/lineup detail beyond this call's
         local scope - caller must not persist raw payloads.
+
+        external_match_ref is stored in the mapping file as "bsd-<id>";
+        the numeric id is what the API's /events/{id}/ path needs.
         """
         if self.circuit_open:
             raise CircuitOpenError("Circuit breaker open, skipping further calls this run.")
 
         self._check_budget()
 
-        url = f"{BSD_API_BASE_URL}/fixtures/{external_match_ref}"
-        req = Request(url, headers={"Authorization": f"Bearer {BSD_API_KEY}"})
+        event_id = external_match_ref.removeprefix("bsd-")
+        url = f"{BSD_API_BASE_URL}/events/{event_id}/"
+        req = Request(url, headers={"Authorization": f"Token {BSD_API_KEY}"})
 
         for attempt in range(1, MAX_RETRIES + 1):
             self.ledger["calls_used"] += 1
@@ -118,9 +122,10 @@ class BSDClient:
                     self.failures = 0
                     # Extract ONLY status-shape info; discard the rest
                     # immediately so raw payload never leaves this function.
+                    # Real status values: notstarted | inprogress | penalties | finished
                     return {
                         "status": raw.get("status"),
-                        "kicked_off": raw.get("status") in ("live", "finished"),
+                        "kicked_off": raw.get("status") in ("inprogress", "penalties", "finished"),
                     }
             except (HTTPError, URLError, TimeoutError) as e:
                 self.failures += 1

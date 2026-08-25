@@ -34,6 +34,13 @@ Note on coverage: only the upcoming round(s) tend to be available at
 any given time, not the full season in advance. Re-running this script
 periodically (weekly is reasonable) and merging is expected workflow,
 not a sign anything is broken.
+
+API shape (confirmed against the provider's own docs):
+  - Auth header: Authorization: Token <key>   (NOT "Bearer")
+  - Endpoint:    GET {BASE_URL}/events/
+  - Params:      date_from, date_to (YYYY-MM-DD), league_id
+  - Envelope:    {"count": N, "events": [...]}
+  - Match fields used here: id, home_team, away_team, event_date, status
 """
 
 import argparse
@@ -61,11 +68,8 @@ LOOKAHEAD_DAYS = 120
 
 def fetch_bsd_matches():
     """
-    Calls SoccerHub Data Service's match search endpoint for the NPFL
-    league and returns the raw list of match dicts. Adjust the
-    path/params below if your account's REST shape differs from what's
-    assumed here (mirrors the fields used elsewhere in SoccerHub's data
-    integration, e.g. NAM's bsd-api.php).
+    Calls SoccerHub Data Service's event/fixture list endpoint for the
+    NPFL league and returns the raw list of match dicts.
     """
     if not BSD_API_KEY or not BSD_API_BASE_URL:
         print("BSD_API_KEY / BSD_API_BASE_URL not set in environment.", file=sys.stderr)
@@ -75,10 +79,10 @@ def fetch_bsd_matches():
     date_to = (date.today() + timedelta(days=LOOKAHEAD_DAYS)).isoformat()
 
     url = (
-        f"{BSD_API_BASE_URL}/matches"
-        f"?league={BSD_LEAGUE_ID}&date_from={date_from}&date_to={date_to}"
+        f"{BSD_API_BASE_URL}/events/"
+        f"?league_id={BSD_LEAGUE_ID}&date_from={date_from}&date_to={date_to}"
     )
-    req = Request(url, headers={"Authorization": f"Bearer {BSD_API_KEY}"})
+    req = Request(url, headers={"Authorization": f"Token {BSD_API_KEY}"})
 
     try:
         with urlopen(req, timeout=20) as resp:
@@ -87,8 +91,12 @@ def fetch_bsd_matches():
         print(f"Failed to reach SoccerHub Data Service: {e}", file=sys.stderr)
         sys.exit(1)
 
-    # Handle both a bare list and a DRF-style {"results": [...]} envelope.
-    return payload.get("results", payload) if isinstance(payload, dict) else payload
+    # The events endpoint uses {"events": [...]}, but be defensive in case
+    # a differently-shaped envelope ({"results": [...]} or a bare list)
+    # shows up on some account tiers.
+    if isinstance(payload, dict):
+        return payload.get("events") or payload.get("results") or []
+    return payload
 
 
 def build_mapping(fixtures, bsd_matches):
