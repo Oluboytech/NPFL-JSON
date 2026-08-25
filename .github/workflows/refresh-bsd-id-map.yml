@@ -1,0 +1,57 @@
+name: Refresh BSD fixture ID mapping
+
+# Runs on a schedule to keep the BSD_ID_MAP_JSON secret up to date as
+# SoccerHub Data Service loads new rounds of fixtures. This is the
+# automated counterpart to running:
+#     python3 scripts/build_bsd_id_map.py --merge
+# by hand and pasting the result into the secret - see
+# .automation/README.md for the manual version of this process and why
+# the mapping lives in a secret rather than a committed file.
+#
+# Needs REPO_ADMIN_TOKEN: a fine-grained PAT scoped to just this repo
+# with "Secrets: Read and write" permission. The default GITHUB_TOKEN
+# cannot manage repo secrets, so this is unavoidable. Create it at
+# GitHub -> Settings -> Developer settings -> Fine-grained tokens,
+# then add it as its own repo secret named REPO_ADMIN_TOKEN.
+
+on:
+  schedule:
+    # Once a day is plenty - new rounds don't appear more often than
+    # weekly, and check-fixture-status.yml already runs far more
+    # frequently for the actual status polling.
+    - cron: "0 6 * * *"   # 06:00 UTC daily
+  workflow_dispatch: {}    # manual trigger, e.g. right after a round drops
+
+permissions:
+  contents: read
+
+jobs:
+  refresh-mapping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pynacl
+
+      # Restore whatever the last known mapping was, so the sync script
+      # can tell what's actually new instead of re-pushing unchanged
+      # data every day. This mirrors the same secret -> local file step
+      # check-fixture-status.yml does, kept here as its own copy since
+      # these are separate workflows/jobs.
+      - name: Write current mapping from secret (for diffing)
+        run: |
+          mkdir -p .automation
+          echo '${{ secrets.BSD_ID_MAP_JSON }}' > .automation/bsd_id_map.json
+
+      - name: Refresh mapping and update secret if changed
+        env:
+          BSD_API_KEY: ${{ secrets.BSD_API_KEY }}
+          BSD_API_BASE_URL: ${{ secrets.BSD_API_BASE_URL }}
+          REPO_ADMIN_TOKEN: ${{ secrets.REPO_ADMIN_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/sync_bsd_id_map_secret.py
