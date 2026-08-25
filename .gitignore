@@ -1,0 +1,9 @@
+# Never commit these - they're either provider-linked identifiers or
+# local run state, and neither belongs in a public, redistributable repo.
+.automation/bsd_id_map.json
+.automation/calls_used_today.json
+
+# Common editor/OS noise
+.DS_Store
+__pycache__/
+*.pyc

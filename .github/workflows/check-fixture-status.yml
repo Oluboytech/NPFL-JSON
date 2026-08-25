@@ -1,0 +1,61 @@
+name: Check NPFL fixture status (SoccerHub-triggered, human-confirmed)
+
+# This workflow NEVER writes match results directly. It only detects
+# status changes via SoccerHub's own fixture-status service and opens
+# GitHub issues asking a maintainer to manually enter the confirmed
+# result from a public source. See scripts/check_fixture_status.py for
+# the full rationale.
+
+on:
+  schedule:
+    # Frequent during typical NPFL matchday windows (Fri-Sun afternoons,
+    # WAT ~ UTC+1, so 14:00-20:00 UTC covers most kickoffs/full-time).
+    # Adjust once you confirm actual kickoff patterns for the season.
+    - cron: "*/15 14-20 * * 5,6,0"   # every 15 min, Fri/Sat/Sun, 14:00-20:59 UTC
+    # Sparse check on all other days, just to catch postponements.
+    - cron: "0 8,16 * * 1,2,3,4"     # twice a day, Mon-Thu
+  workflow_dispatch: {}               # manual trigger for testing
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  check-status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Cache the daily call ledger across runs so the budget is enforced
+      # cumulatively through the day, not reset every workflow run.
+      - name: Restore call ledger cache
+        uses: actions/cache@v4
+        with:
+          path: .automation/calls_used_today.json
+          key: bsd-call-ledger-${{ github.run_id }}
+          restore-keys: |
+            bsd-call-ledger-
+
+      - name: Write fixture ID mapping from secret
+        run: |
+          mkdir -p .automation
+          echo '${{ secrets.BSD_ID_MAP_JSON }}' > .automation/bsd_id_map.json
+
+      - name: Check fixture status
+        env:
+          BSD_API_KEY: ${{ secrets.BSD_API_KEY }}
+          BSD_API_BASE_URL: ${{ secrets.BSD_API_BASE_URL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DAILY_CALL_BUDGET: "500"
+        run: python scripts/check_fixture_status.py
+
+      - name: Save call ledger cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .automation/calls_used_today.json
+          key: bsd-call-ledger-${{ github.run_id }}

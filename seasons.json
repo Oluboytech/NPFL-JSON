@@ -1,0 +1,11 @@
+{
+  "seasons": [
+    {
+      "season": "2026-27",
+      "league": "Nigeria Premier Football League",
+      "fixtures": "2026-27/ng.1.json",
+      "teams": "2026-27/teams/ng.1.teams.json",
+      "players_dir": "2026-27/players/"
+    }
+  ]
+}

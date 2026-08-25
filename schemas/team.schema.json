@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Oluboytech/NPFL-JSON/blob/main/schemas/team.schema.json",
+  "title": "NPFL Team",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["id", "name", "code"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "code": { "type": "string", "minLength": 1 }
+  }
+}

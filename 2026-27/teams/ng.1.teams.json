@@ -1,0 +1,29 @@
+{
+  "name": "NPFL 2026/27 Clubs",
+  "season": "2026-27",
+  "attribution": "https://soccerhub.ng",
+  "last_updated": "2026-08-25",
+  "teams": [
+    {"id": "abia-warriors", "name": "Abia Warriors", "code": "ABW", "city": "Aba", "state": "Abia", "stadium": "Umuahia Township Stadium", "crest_url": null, "bsd_team_id": 565, "current_coach": "Erasmus Onuh"},
+    {"id": "barau", "name": "Barau", "code": "BAR", "city": "Kano", "state": "Kano", "stadium": "Sani Abacha Stadium", "crest_url": null, "bsd_team_id": 567, "current_coach": "Eugene Agagbe"},
+    {"id": "bendel-insurance", "name": "Bendel Insurance", "code": "BEN", "city": "Benin City", "state": "Edo", "stadium": "Samuel Ogbemudia Stadium", "crest_url": null, "bsd_team_id": 570, "current_coach": "Greg Ikhenoba"},
+    {"id": "doma-united", "name": "Doma United", "code": "DOM", "city": "Gombe", "state": "Gombe", "stadium": "Pantami Stadium", "crest_url": null, "note": "Home fixtures also listed as TBA in early rounds", "bsd_team_id": 5648, "current_coach": "Akinade Onigbinde"},
+    {"id": "enyimba", "name": "Enyimba Int'l", "code": "ENY", "city": "Aba", "state": "Abia", "stadium": "Enyimba International Stadium", "crest_url": null, "bsd_team_id": 568, "current_coach": "Stanley Eguma"},
+    {"id": "ikorodu-city", "name": "Ikorodu City", "code": "IKO", "city": "Lagos", "state": "Lagos", "stadium": null, "crest_url": null, "note": "Promoted club", "bsd_team_id": 576},
+    {"id": "inter-lagos", "name": "Inter Lagos", "code": "INL", "city": "Lagos", "state": "Lagos", "stadium": null, "crest_url": null, "note": "Promoted club, first-ever NPFL top-flight appearance", "bsd_team_id": 8255},
+    {"id": "kano-pillars", "name": "Kano Pillars", "code": "KAP", "city": "Kano", "state": "Kano", "stadium": "Sani Abacha Stadium", "crest_url": null, "bsd_team_id": 566},
+    {"id": "katsina-united", "name": "Katsina United", "code": "KAT", "city": "Katsina", "state": "Katsina", "stadium": null, "crest_url": null, "bsd_team_id": 573},
+    {"id": "kun-khalifat", "name": "Kun Khalifat", "code": "KUN", "city": "Owerri", "state": "Imo", "stadium": null, "crest_url": null, "bsd_team_id": 572},
+    {"id": "kwara-united", "name": "Kwara United", "code": "KWA", "city": "Ilorin", "state": "Kwara", "stadium": "Rashidi Yekini Main Bowl, George Innih Stadium Complex", "crest_url": null, "bsd_team_id": 575, "current_coach": "Ashifat Sulyman Olayinka"},
+    {"id": "nasarawa-united", "name": "Nasarawa United", "code": "NAS", "city": null, "state": "Nasarawa", "stadium": null, "crest_url": null, "bsd_team_id": 582, "current_coach": "Ayuba Mbwas Mangut"},
+    {"id": "niger-tornadoes", "name": "Niger Tornadoes", "code": "NIG", "city": "Minna", "state": "Niger", "stadium": null, "crest_url": null, "bsd_team_id": 581, "current_coach": "Hamza Abarah"},
+    {"id": "plateau-united", "name": "Plateau United", "code": "PLA", "city": "Jos", "state": "Plateau", "stadium": null, "crest_url": null, "bsd_team_id": 580},
+    {"id": "ranchers-bees", "name": "Ranchers Bees", "code": "RAN", "city": "Kaduna", "state": "Kaduna", "stadium": null, "crest_url": null, "note": "Promoted club", "bsd_team_id": 8256},
+    {"id": "rangers-intl", "name": "Rangers Int'l", "code": "RAI", "city": "Enugu", "state": "Enugu", "stadium": "Nnamdi Azikiwe Stadium (\"The Cathedral\")", "crest_url": null, "note": "Defending 2025/26 champions", "bsd_team_id": 571, "current_coach": "Fidelis Ilechukwu"},
+    {"id": "rivers-united", "name": "Rivers United", "code": "RIV", "city": "Port Harcourt", "state": "Rivers", "stadium": null, "crest_url": null, "bsd_team_id": 564, "current_coach": "Hakeem Busari"},
+    {"id": "shooting-stars", "name": "Shooting Stars", "code": "3SC", "city": "Ibadan", "state": "Oyo", "stadium": "Lekan Salami Stadium", "crest_url": null, "bsd_team_id": 577},
+    {"id": "sporting-lagos", "name": "Sporting Lagos", "code": "SPL", "city": "Lagos", "state": "Lagos", "stadium": null, "crest_url": null, "note": "Promoted club", "bsd_team_id": 5649},
+    {"id": "warri-wolves", "name": "Warri Wolves", "code": "WAR", "city": "Warri", "state": "Delta", "stadium": null, "crest_url": null, "bsd_team_id": 574}
+  ],
+  "bsd_enrichment_note": "bsd_team_id and current_coach are enriched via SoccerHub's own data service (id/name/coach only \u2014 no proprietary stats, ratings, or odds-derived fields are published here). Coach data reflects records as of last_updated and may lag actual managerial changes."
+}

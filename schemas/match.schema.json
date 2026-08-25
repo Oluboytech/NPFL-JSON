@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Oluboytech/NPFL-JSON/blob/main/schemas/match.schema.json",
+  "title": "NPFL Match",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "round",
+    "date",
+    "time",
+    "team1",
+    "team2",
+    "venue",
+    "status",
+    "score",
+    "id",
+    "home_team_id",
+    "away_team_id"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^npfl-[0-9]{4}-[0-9]{2}-[a-z0-9-]+-[a-z0-9-]+$"
+    },
+    "round": { "type": "string", "pattern": "^Matchday [1-9][0-9]*$" },
+    "date": { "type": "string", "format": "date" },
+    "time": { "type": "string" },
+    "team1": { "type": "string", "minLength": 1 },
+    "team2": { "type": "string", "minLength": 1 },
+    "home_team_id": { "type": "string", "minLength": 1 },
+    "away_team_id": { "type": "string", "minLength": 1 },
+    "venue": { "type": ["string", "null"] },
+    "status": {
+      "type": "string",
+      "enum": ["scheduled", "finished", "postponed", "cancelled"]
+    },
+    "score": {
+      "type": ["object", "null"],
+      "properties": {
+        "ft": {
+          "type": "array",
+          "prefixItems": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "integer", "minimum": 0 }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        }
+      },
+      "required": ["ft"],
+      "additionalProperties": true
+    }
+  }
+}
