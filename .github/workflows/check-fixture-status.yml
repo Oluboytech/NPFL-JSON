@@ -41,9 +41,11 @@ jobs:
             bsd-call-ledger-
 
       - name: Write fixture ID mapping from secret
+        env:
+          BSD_ID_MAP_JSON: ${{ secrets.BSD_ID_MAP_JSON }}
         run: |
           mkdir -p .automation
-          echo '${{ secrets.BSD_ID_MAP_JSON }}' > .automation/bsd_id_map.json
+          printf '%s' "$BSD_ID_MAP_JSON" > .automation/bsd_id_map.json
 
       - name: Check fixture status
         env:

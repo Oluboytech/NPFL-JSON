@@ -44,9 +44,11 @@ jobs:
       # check-fixture-status.yml does, kept here as its own copy since
       # these are separate workflows/jobs.
       - name: Write current mapping from secret (for diffing)
+        env:
+          BSD_ID_MAP_JSON: ${{ secrets.BSD_ID_MAP_JSON }}
         run: |
           mkdir -p .automation
-          echo '${{ secrets.BSD_ID_MAP_JSON }}' > .automation/bsd_id_map.json
+          printf '%s' "$BSD_ID_MAP_JSON" > .automation/bsd_id_map.json
 
       - name: Refresh mapping and update secret if changed
         env:
