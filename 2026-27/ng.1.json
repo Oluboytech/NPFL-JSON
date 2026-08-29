@@ -5,7 +5,7 @@
   "source": "Compiled from the NPFL's official 2026/27 published fixture list (PDF), updated manually with results and schedule changes.",
   "attribution": "https://soccerhub.ng",
   "last_updated": "2026-08-25",
-  "notes": "The NPFL may adjust match dates and times for TV/broadcast convenience — fixtures here reflect the originally published schedule and are updated as official changes are confirmed.",
+  "notes": "The NPFL may adjust match dates and times for TV/broadcast convenience \u2014 fixtures here reflect the originally published schedule and are updated as official changes are confirmed.",
   "matches": [
     {
       "round": "Matchday 1",
@@ -14,8 +14,13 @@
       "team1": "Shooting Stars",
       "team2": "Inter Lagos",
       "venue": "Ibadan",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          2,
+          1
+        ]
+      },
       "id": "npfl-2026-27-shooting-stars-inter-lagos",
       "home_team_id": "shooting-stars",
       "away_team_id": "inter-lagos"
