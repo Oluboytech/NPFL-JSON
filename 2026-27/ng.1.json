@@ -293,8 +293,13 @@
       "team1": "Inter Lagos",
       "team2": "Doma United",
       "venue": "Lagos",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          0,
+          1
+        ]
+      },
       "id": "npfl-2026-27-inter-lagos-doma-united",
       "home_team_id": "inter-lagos",
       "away_team_id": "doma-united"
