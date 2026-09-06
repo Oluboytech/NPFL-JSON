@@ -202,8 +202,13 @@
       "team1": "Kun Khalifat",
       "team2": "Barau",
       "venue": "Owerri",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          0,
+          0
+        ]
+      },
       "id": "npfl-2026-27-kun-khalifat-barau",
       "home_team_id": "kun-khalifat",
       "away_team_id": "barau"
@@ -215,8 +220,13 @@
       "team1": "Nasarawa United",
       "team2": "Bendel Insurance",
       "venue": null,
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          1,
+          0
+        ]
+      },
       "id": "npfl-2026-27-nasarawa-united-bendel-insurance",
       "home_team_id": "nasarawa-united",
       "away_team_id": "bendel-insurance"
@@ -254,8 +264,13 @@
       "team1": "Plateau United",
       "team2": "Kwara United",
       "venue": "Jos",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          1,
+          0
+        ]
+      },
       "id": "npfl-2026-27-plateau-united-kwara-united",
       "home_team_id": "plateau-united",
       "away_team_id": "kwara-united"
@@ -267,8 +282,13 @@
       "team1": "Kano Pillars",
       "team2": "Niger Tornadoes",
       "venue": "Kano",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          3,
+          2
+        ]
+      },
       "id": "npfl-2026-27-kano-pillars-niger-tornadoes",
       "home_team_id": "kano-pillars",
       "away_team_id": "niger-tornadoes"
