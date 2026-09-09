@@ -189,8 +189,13 @@
       "team1": "Ranchers Bees",
       "team2": "Abia Warriors",
       "venue": "Kaduna",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          4,
+          0
+        ]
+      },
       "id": "npfl-2026-27-ranchers-bees-abia-warriors",
       "home_team_id": "ranchers-bees",
       "away_team_id": "abia-warriors"
