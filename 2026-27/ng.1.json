@@ -349,8 +349,13 @@
       "team1": "Abia Warriors",
       "team2": "Ikorodu City",
       "venue": "Aba",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          2,
+          2
+        ]
+      },
       "id": "npfl-2026-27-abia-warriors-ikorodu-city",
       "home_team_id": "abia-warriors",
       "away_team_id": "ikorodu-city"
@@ -362,8 +367,13 @@
       "team1": "Barau",
       "team2": "Ranchers Bees",
       "venue": "Kano",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          3,
+          1
+        ]
+      },
       "id": "npfl-2026-27-barau-ranchers-bees",
       "home_team_id": "barau",
       "away_team_id": "ranchers-bees"
@@ -375,8 +385,13 @@
       "team1": "Bendel Insurance",
       "team2": "Kun Khalifat",
       "venue": "Benin",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          4,
+          2
+        ]
+      },
       "id": "npfl-2026-27-bendel-insurance-kun-khalifat",
       "home_team_id": "bendel-insurance",
       "away_team_id": "kun-khalifat"
@@ -414,8 +429,13 @@
       "team1": "Kwara United",
       "team2": "Katsina United",
       "venue": "Ilorin",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          3,
+          0
+        ]
+      },
       "id": "npfl-2026-27-kwara-united-katsina-united",
       "home_team_id": "kwara-united",
       "away_team_id": "katsina-united"
@@ -427,8 +447,13 @@
       "team1": "Niger Tornadoes",
       "team2": "Plateau United",
       "venue": null,
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          1,
+          1
+        ]
+      },
       "id": "npfl-2026-27-niger-tornadoes-plateau-united",
       "home_team_id": "niger-tornadoes",
       "away_team_id": "plateau-united"
@@ -471,8 +496,13 @@
       "team1": "Inter Lagos",
       "team2": "Sporting Lagos",
       "venue": "Lagos",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          0,
+          3
+        ]
+      },
       "id": "npfl-2026-27-inter-lagos-sporting-lagos",
       "home_team_id": "inter-lagos",
       "away_team_id": "sporting-lagos"
