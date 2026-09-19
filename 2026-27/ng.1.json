@@ -514,8 +514,13 @@
       "team1": "Ikorodu City",
       "team2": "Barau",
       "venue": "Lagos",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          0,
+          0
+        ]
+      },
       "id": "npfl-2026-27-ikorodu-city-barau",
       "home_team_id": "ikorodu-city",
       "away_team_id": "barau"
