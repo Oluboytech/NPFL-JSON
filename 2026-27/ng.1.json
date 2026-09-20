@@ -532,8 +532,13 @@
       "team1": "Ranchers Bees",
       "team2": "Bendel Insurance",
       "venue": "Kaduna",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          2,
+          1
+        ]
+      },
       "id": "npfl-2026-27-ranchers-bees-bendel-insurance",
       "home_team_id": "ranchers-bees",
       "away_team_id": "bendel-insurance"
@@ -545,8 +550,13 @@
       "team1": "Kun Khalifat",
       "team2": "Rangers Int'l",
       "venue": "Owerri",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          2,
+          4
+        ]
+      },
       "id": "npfl-2026-27-kun-khalifat-rangers-intl",
       "home_team_id": "kun-khalifat",
       "away_team_id": "rangers-intl"
@@ -558,8 +568,13 @@
       "team1": "Nasarawa United",
       "team2": "Rivers United",
       "venue": null,
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          1,
+          1
+        ]
+      },
       "id": "npfl-2026-27-nasarawa-united-rivers-united",
       "home_team_id": "nasarawa-united",
       "away_team_id": "rivers-united"
@@ -571,8 +586,13 @@
       "team1": "Warri Wolves",
       "team2": "Kwara United",
       "venue": "Ozoro",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          1,
+          0
+        ]
+      },
       "id": "npfl-2026-27-warri-wolves-kwara-united",
       "home_team_id": "warri-wolves",
       "away_team_id": "kwara-united"
@@ -584,8 +604,13 @@
       "team1": "Katsina United",
       "team2": "Niger Tornadoes",
       "venue": "Katsina",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          0,
+          0
+        ]
+      },
       "id": "npfl-2026-27-katsina-united-niger-tornadoes",
       "home_team_id": "katsina-united",
       "away_team_id": "niger-tornadoes"
@@ -597,8 +622,13 @@
       "team1": "Plateau United",
       "team2": "Shooting Stars",
       "venue": "Jos",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          3,
+          1
+        ]
+      },
       "id": "npfl-2026-27-plateau-united-shooting-stars",
       "home_team_id": "plateau-united",
       "away_team_id": "shooting-stars"
@@ -610,8 +640,13 @@
       "team1": "Kano Pillars",
       "team2": "Doma United",
       "venue": "Kano",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          4,
+          1
+        ]
+      },
       "id": "npfl-2026-27-kano-pillars-doma-united",
       "home_team_id": "kano-pillars",
       "away_team_id": "doma-united"
@@ -623,8 +658,13 @@
       "team1": "Enyimba Int'l",
       "team2": "Inter Lagos",
       "venue": "Aba",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          0,
+          1
+        ]
+      },
       "id": "npfl-2026-27-enyimba-inter-lagos",
       "home_team_id": "enyimba",
       "away_team_id": "inter-lagos"
@@ -636,8 +676,13 @@
       "team1": "Sporting Lagos",
       "team2": "Abia Warriors",
       "venue": "Lagos",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          0,
+          2
+        ]
+      },
       "id": "npfl-2026-27-sporting-lagos-abia-warriors",
       "home_team_id": "sporting-lagos",
       "away_team_id": "abia-warriors"
