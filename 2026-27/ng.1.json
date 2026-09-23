@@ -720,8 +720,13 @@
       "team1": "Rangers Int'l",
       "team2": "Ranchers Bees",
       "venue": "Enugu",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          1,
+          0
+        ]
+      },
       "id": "npfl-2026-27-rangers-intl-ranchers-bees",
       "home_team_id": "rangers-intl",
       "away_team_id": "ranchers-bees"
@@ -746,8 +751,13 @@
       "team1": "Kwara United",
       "team2": "Nasarawa United",
       "venue": "Ilorin",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          2,
+          1
+        ]
+      },
       "id": "npfl-2026-27-kwara-united-nasarawa-united",
       "home_team_id": "kwara-united",
       "away_team_id": "nasarawa-united"
@@ -759,8 +769,13 @@
       "team1": "Niger Tornadoes",
       "team2": "Warri Wolves",
       "venue": null,
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          0,
+          0
+        ]
+      },
       "id": "npfl-2026-27-niger-tornadoes-warri-wolves",
       "home_team_id": "niger-tornadoes",
       "away_team_id": "warri-wolves"
@@ -772,8 +787,13 @@
       "team1": "Shooting Stars",
       "team2": "Katsina United",
       "venue": "Ibadan",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          2,
+          0
+        ]
+      },
       "id": "npfl-2026-27-shooting-stars-katsina-united",
       "home_team_id": "shooting-stars",
       "away_team_id": "katsina-united"
@@ -811,8 +831,13 @@
       "team1": "Enyimba Int'l",
       "team2": "Sporting Lagos",
       "venue": "Aba",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          2,
+          3
+        ]
+      },
       "id": "npfl-2026-27-enyimba-sporting-lagos",
       "home_team_id": "enyimba",
       "away_team_id": "sporting-lagos"
