@@ -738,8 +738,13 @@
       "team1": "Rivers United",
       "team2": "Kun Khalifat",
       "venue": "Port Harcourt",
-      "status": "scheduled",
-      "score": null,
+      "status": "finished",
+      "score": {
+        "ft": [
+          5,
+          0
+        ]
+      },
       "id": "npfl-2026-27-rivers-united-kun-khalifat",
       "home_team_id": "rivers-united",
       "away_team_id": "kun-khalifat"
